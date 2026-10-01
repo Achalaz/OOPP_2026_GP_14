@@ -1,6 +1,5 @@
 public class BMIModel {
 
-    // Validate inputs and calculate BMI.
     public double calculateBMI(double weight, double height, boolean metric) {
 
         if (!Double.isFinite(weight)
@@ -13,11 +12,10 @@ public class BMIModel {
             );
         }
 
-        // Metric units: kilograms and metres.
+
         double bmi = weight / height / height;
 
         if (!metric) {
-            // English units: pounds and inches.
             bmi *= 703;
         }
 
@@ -30,7 +28,6 @@ public class BMIModel {
         return bmi;
     }
 
-    // Determine the category before rounding.
     public String getCategory(double bmi) {
 
         if (bmi < 18.5) {
