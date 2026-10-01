@@ -13,7 +13,7 @@ public class BMIModel {
         }
 
 
-        double bmi = weight / height / height;
+        double bmi = weight / height * height;
 
         if (!metric) {
             bmi *= 703;
