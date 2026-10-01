@@ -24,7 +24,6 @@ public class BMICalculatorUI extends JFrame {
 
     public BMICalculatorUI() {
 
-        // Configure the application window.
         setTitle("BMI Calculator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -39,7 +38,6 @@ public class BMICalculatorUI extends JFrame {
         mainPanel.add(title);
         mainPanel.add(Box.createVerticalStrut(20));
 
-        // Allow only one unit system to be selected.
         ButtonGroup unitGroup = new ButtonGroup();
         unitGroup.add(metricButton);
         unitGroup.add(englishButton);
@@ -52,7 +50,6 @@ public class BMICalculatorUI extends JFrame {
         mainPanel.add(unitPanel);
         mainPanel.add(Box.createVerticalStrut(10));
 
-        // Create the input section.
         JPanel inputPanel = new JPanel(new GridLayout(2, 2, 10, 15));
         inputPanel.add(weightLabel);
         inputPanel.add(weightField);
@@ -65,7 +62,6 @@ public class BMICalculatorUI extends JFrame {
         JButton calculateButton = new JButton("Calculate BMI");
         JButton clearButton = new JButton("Clear");
 
-        // Styling the buttons blue
         calculateButton.setBackground(new Color(0, 102, 204)); // Deep blue
         calculateButton.setForeground(Color.WHITE); // White text
         calculateButton.setFocusPainted(false);
@@ -83,7 +79,6 @@ public class BMICalculatorUI extends JFrame {
         mainPanel.add(buttonPanel);
         mainPanel.add(Box.createVerticalStrut(20));
 
-        // Create the result section.
         JPanel resultPanel = new JPanel(new GridLayout(2, 1, 0, 10));
         resultPanel.setBorder(
                 BorderFactory.createCompoundBorder(
@@ -101,7 +96,6 @@ public class BMICalculatorUI extends JFrame {
         mainPanel.add(resultPanel);
         mainPanel.add(Box.createVerticalStrut(20));
 
-        // Display the reference ranges from the practical sheet.
         String[] columns = {"Category", "BMI"};
 
         String[][] rows = {
@@ -133,14 +127,12 @@ public class BMICalculatorUI extends JFrame {
 
         mainPanel.add(referencePanel);
 
-        // Register button actions.
         calculateButton.addActionListener(event -> calculateBMI());
         clearButton.addActionListener(event -> clearFields());
 
         metricButton.addActionListener(event -> changeUnits());
         englishButton.addActionListener(event -> changeUnits());
 
-        // Allow Enter to calculate BMI.
         getRootPane().setDefaultButton(calculateButton);
 
         setContentPane(mainPanel);
@@ -159,7 +151,6 @@ public class BMICalculatorUI extends JFrame {
             heightLabel.setText("Height (in):");
         }
 
-        // Clear old values when changing units.
         clearFields();
     }
 
@@ -170,7 +161,6 @@ public class BMICalculatorUI extends JFrame {
         String weightText = weightField.getText().trim();
         String heightText = heightField.getText().trim();
 
-        // Check for missing inputs.
         if (weightText.isEmpty() || heightText.isEmpty()) {
             showError("Please enter both weight and height.");
             return;
@@ -204,7 +194,6 @@ public class BMICalculatorUI extends JFrame {
 
     private void clearFields() {
 
-        // Clear inputs and reset the displayed result.
         weightField.setText("");
         heightField.setText("");
         resetResult();
